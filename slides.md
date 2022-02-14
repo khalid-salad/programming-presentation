@@ -123,7 +123,7 @@ for i in range(2, 11):
 <div class="col">
 
 | $i$  | `is_prime(i)` | Correct? |
-|------|---------------|----------|
+| ---- | ------------- | -------- |
 | $2$  | `True`        | ✓        |
 | $3$  | `True`        | ✓        |
 | $4$  | `True`        | ✗        |
@@ -172,7 +172,7 @@ for i in range(2, 11):
 <div class="col">
 
 <fieldset style="border: 2px groove">
-      <legend style="border: 2px groove;margin-left: -4em; padding:10px "><font color=white>ugly</font></legend>
+      <legend style="border: 2px groove;margin-left: 3em; padding:10px "><font color=white>ugly</font></legend>
 
 ```python[]
 c=(a+b)**0.5
@@ -188,7 +188,7 @@ L=[1,2,7]
 <div class="col">
 
 <fieldset style="border: 2px groove">
-      <legend style="border: 2px groove;margin-left: -3em; padding:10px "><font color=white>readable</font></legend>
+      <legend style="border: 2px groove;margin-left: 3em; padding:10px "><font color=white>readable</font></legend>
 
 ```python[]
 c = (a + b) ** 0.5
@@ -201,7 +201,7 @@ L = [1, 2, 7]
 
 </div>
 
-* <!-- .element class="fragment" --> The easiest way to be consistent is to use a formater
+* <!-- .element class="fragment" --> The easiest way to be consistent is to use a formatter
   * <!-- .element class="fragment" --> A formatter automatically formats your code
     * Black, yapf, autopep, etc. for Python
     * clang-format for C/C++
@@ -211,24 +211,27 @@ Note: notice that, while the _semantics_ of both sets of code are the same, the 
 more cluttered and difficult to read.
 ----
 ## Structure
-* Syntactic readability (style) is not enough
-* Code should be written for readability
-* <font color=red>Modular</font> and <font color=red>structured</font> code is easier to
-  * read
-  * write
-  * debug
+* <!-- .element class="fragment" --> Syntactic readability (style) is not enough
+* <!-- .element class="fragment" --> Code should be written for readability
+* <!-- .element class="fragment" --> <font color=red>Modular</font> and <font color=red>structured</font> code is easier to
+  * <!-- .element class="fragment" --> read
+  * <!-- .element class="fragment" --> write
+  * <!-- .element class="fragment" --> debug
 ----
 ## Example Problem
 * Consider the following problem
 <fieldset style="border: 2px groove; padding:10px">
       <legend style="border: 2px groove;margin-left: -3em; padding:10px "><font color=white>Problem</font></legend>
 Find the largest product of two $3$-digit numbers that is a palindrome. 
-</fieldset>
+</fieldset> <!-- .element class="fragment" -->
+
+<!-- .element class="fragment" -->
 <fieldset style="border: 2px groove; padding:10px">
       <legend style="border: 2px groove;margin-left: -3em; padding:10px "><font color=white>Brute Force Solution</font></legend>
 Iterate through all $10^6$ pairs of products and check if they are palindromic while keeping track of max.
 </fieldset>
 
+<!-- .element class="fragment" -->
 ----
 ## Bad Structure
 
@@ -299,9 +302,6 @@ for a, b in pairs:
 ----
 
 ## Good Structure
-<div class="container">
-
-<div class="col">
 
 ```python
 def is_palindrome(num):
@@ -313,23 +313,15 @@ def is_palindrome(num):
 
 def main():
   biggest = 0
-  for a, b in pairs:
+  for a, b in product(range(100, 1000), repeat=2):
     prod = a * b
     if is_palindrome(prod):
       biggest = max(biggest, prod)
   print(biggest)
 ```
 
-</div>
-
-<div class="col">
-
 * <!-- .element class="fragment" --> Basically the same code
 * <!-- .element class="fragment" --> <code>main</code> describes what the code is doing <font color=red>overall</font>
-
-</div>
-
-</div>
 
 ----
 
@@ -357,9 +349,9 @@ def i_sqrt(n):
 
 ----
 ## Good Comments
-* As a rule of thumb
-  * good <font color=red>code</font> describes <font color=red>what</font> and <font color=red>how</font>
-  * good <font color=red>comments</font> describe <font color=red>why</font>
+* <!-- .element class="fragment" --> As a rule of thumb
+  * <!-- .element class="fragment" --> good <font color=red>code</font> describes <font color=red>what</font> and <font color=red>how</font>
+  * <!-- .element class="fragment" --> good <font color=red>comments</font> describe <font color=red>why</font>
 ----
 ## Good Comment Example
 
@@ -403,8 +395,7 @@ def qs(a):
   if len(a) <= 1:
     return a
   else:
-    x, z = [], []
-    y = a[0]
+    x, z, y = [], [], a[0]
     for p in a:
       if p < y:
         x.append(p)
@@ -422,8 +413,7 @@ def quicksort(array):
   if len(array) <= 1:
     return array
   else:
-    left, right = [], []
-    pivot = array[0]
+    left, right, pivot = [], [], array[0]
     for ele in array:
       if ele < pivot:
         left.append(ele)
@@ -453,8 +443,7 @@ def qs(a):
   if len(a) <= 1:
     return a
   else:
-    x, z = [], []
-    y = a[0]
+    x, z, y = [], [], a[0]
     for p in a:
       if p < y:
         x.append(p)
@@ -474,8 +463,7 @@ def quicksort(array):
   if len(array) <= 1:
     return array
   else:
-    left, right = [], []
-    pivot = array[0]
+    left, right, pivot = [], [], array[0]
     for ele in array:
       if ele < pivot:
         left.append(ele)
@@ -501,3 +489,146 @@ def quicksort(array):
 
 ---
 ## Performance
+* <!-- .element class="fragment" --> Highly case-by-case
+  * <!-- .element class="fragment" --> specific use case may allow for less performant code
+    * <!-- .element class="fragment" --> e.g. a one-time scientific calculation
+  * <!-- .element class="fragment" --> or may require more performant code
+    * <!-- .element class="fragment" --> e.g. real-time financial analysis
+
+----
+
+## Performance
+* <!-- .element class="fragment" --> Usually comes down to correct choice of algorithm and data structure
+  * <!-- .element class="fragment" --> e.g. if checking existence of an element, an array gives $\mathcal{O}(n)$ but a hash table gives $\mathcal{O}(1)$
+    * <!-- .element class="fragment" --> which might make the difference between $\mathcal{O}(n^2)$ and $\mathcal{O}(n)$ overall
+* <!-- .element class="fragment" --> While it does depend on use case, it is <font color=red>usually</font> still best to focus on readability over performance
+  * <!-- .element class="fragment" --> it is easier to make slow code fast than to make confusing code understandable
+
+---
+## Problem Solving
+
+---
+
+## Subroutines
+* <!-- .element class="fragment" --> Break up your code into smaller functions
+  * <!-- .element class="fragment" --> easier to code small, individual parts
+  * <!-- .element class="fragment" --> easier to make changes and diagnose bugs
+* <!-- .element class="fragment" --> Any task that is <font color=red>repeated</font> should go in a subroutine
+
+----
+
+## Debugging
+* <!-- .element class="fragment" --> Use a debugger when encountering issues
+  * <!-- .element class="fragment" --> will allow you to proceed through a program step-by-step
+  * <!-- .element class="fragment" --> will help catch a variety of (but not all) bugs
+
+----
+
+## Example Problem
+
+<fieldset style="border: 2px groove; padding:10px">
+      <legend style="border: 2px groove;margin-left: -3em; padding:10px "><font color=white>Problem</font></legend>
+Given an array of integers $\texttt{nums}$ and a positive integer $k$, find whether it is possible to divide $\texttt{nums}$ into sets of $k$ consecutive
+numbers. 
+</fieldset> <!-- .element class="fragment" -->
+
+----
+
+## Where to Start
+* <!-- .element class="fragment" --> Look at examples
+  1) <!-- .element class="fragment" --> $\texttt{nums} = [1, 2, 3, 3, 4, 4, 5, 6]$, $k = 4$
+     * <!-- .element class="fragment" --> Solution: $[1, 2, 3, 4], [3, 4, 5, 6]$
+  2) <!-- .element class="fragment" --> $\texttt{nums} = [3, 2, 1, 2, 3, 4, 3, 4, 5, 9, 10, 11]$, $k = 3$
+     * <!-- .element class="fragment" --> Solution: $[1, 2, 3], [2, 3, 4], [3, 4, 5], [9, 10, 11]$
+
+----
+
+## Where to Start
+* <!-- .element class="fragment" --> Hopefully notice a pattern:
+  * <!-- .element class="fragment" --> if $x = \min(A)$, then $x, x + 1, \dots, x + k - 1$ form a subarray
+  * <!-- .element class="fragment" --> naturally lends itself to a recursive solution
+    * <!-- .element class="fragment" --> remove $x, x + 1, \dots, x + k - 1$, then repeat
+    * <!-- .element class="fragment" --> if run out of elements before removing all $k$, then no solution 
+
+----
+
+## Writing a solution
+* <!-- .element class="fragment" --> Two observations
+  1) <!-- .element class="fragment" --> we are removing the $k$ smallest elements
+  2) <!-- .element class="fragment" --> if we know some element $x$, we know the next element is $x + 1$
+* <!-- .element class="fragment" --> 1. suggests the use of a heap
+* <!-- .element class="fragment" --> 2. suggests the use of a dictionary (associative array)
+* <!-- .element class="fragment" --> both solutions are valid
+
+----
+
+## Heap Solution
+* <!-- .element class="fragment" --> Heap <code>pop</code> removes the smallest element
+* <!-- .element class="fragment" --> Need to account for removing the $k$ smallest <font color=red>distinct</font> elements
+* <!-- .element class="fragment" --> Thus, set up <code>(value, count)</code> pairs
+
+----
+
+## Heap Solution
+* <!-- .element class="fragment" --> Then <code>pop</code>, say smallest value is $(x, c)$
+  * <!-- .element class="fragment" --> effectively removing $c$ copies of $x$
+  * <!-- .element class="fragment" --> then, remove $c$ copies of $x + 1, \dots, x + k - 1$, if possible
+    * <!-- .element class="fragment" --> if not possible, return <code>False</code>
+  * <!-- .element class="fragment" --> after popping, need to return remaining elements to heap
+  * <!-- .element class="fragment" --> keep track of remaining elements in array
+
+----
+
+## Python Implementation
+
+```python
+popped = []  # store popped heap values
+prev, min_count = heappop(heap)
+for i in range(k - 1):
+  if not heap:  # ran out of elements
+    return False
+  else:
+      value, count = heappop(heap)
+      if value != prev + 1:  # not consecutive
+        return False
+      else:
+        count -= min_count
+        prev = value
+        if count > 0:
+          popped.append((value, count))
+for val in popped:
+    heappush(heap, val)
+```
+
+----
+
+## Dictionary Solution
+* <!-- .element class="fragment" --> Dictionary holds the count for each element
+* <!-- .element class="fragment" --> if $x$ is the minimum and $D[x] = \texttt{count}$
+  * <!-- .element class="fragment" --> must have $D[x + i] \geq \texttt{count}$ for $i \in [1, 2, \dots, k - 1]$
+  * <!-- .element class="fragment" --> i.e., must have $D[x + 1] \geq \texttt{count}$, $D[x + 2] \geq \texttt{count}$, and so on
+  * <!-- .element class="fragment" --> else return <code>False</code>
+* <!-- .element class="fragment" --> Decrease $D[x + i]$ by $\texttt{count}$
+* <!-- .element class="fragment" --> Remove entry if it becomes 0
+
+----
+
+## Python Implementation
+
+```python
+while counts:  # dictionary to store counts
+  x = min(counts)
+  min_count = counts[x]
+  del counts[x]  # remove smallest
+  for i in range(1, k):
+      if counts[x + i] < min_count:
+        return False
+      else:
+        counts[x + i] -= min_count
+        if counts[x + i] == 0:
+          del counts[x + i]
+```
+
+---
+
+# Thank you!
