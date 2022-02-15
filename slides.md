@@ -203,8 +203,8 @@ L = [1, 2, 7]
 
 * <!-- .element class="fragment" --> The easiest way to be consistent is to use a formatter
   * <!-- .element class="fragment" --> A formatter automatically formats your code
-    * Black, yapf, autopep, etc. for Python
-    * clang-format for C/C++
+    * <!-- .element class="fragment" --> Black, yapf, autopep, etc. for Python
+    * <!-- .element class="fragment" --> clang-format for C/C++
 
 
 Note: notice that, while the _semantics_ of both sets of code are the same, the code on the left is
