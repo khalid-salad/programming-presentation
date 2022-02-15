@@ -227,7 +227,7 @@ Find the largest product of two $3$-digit numbers that is a palindrome.
 
 <!-- .element class="fragment" -->
 <fieldset style="border: 2px groove; padding:10px">
-      <legend style="border: 2px groove;margin-left: -3em; padding:10px "><font color=white>Brute Force Solution</font></legend>
+      <legend style="border: 2px groove;margin-left: -1em; padding:10px "><font color=white>Brute Force Solution</font></legend>
 Iterate through all $10^6$ pairs of products and check if they are palindromic while keeping track of max.
 </fieldset>
 
@@ -286,9 +286,10 @@ for a, b in pairs:
   prod = a * b
   if is_palindrome(prod):
     biggest = max(biggest, prod)
-```
+``` 
 
 </div>
+
 
 <div class="col">
 
@@ -330,7 +331,7 @@ def main():
 * <!-- .element class="fragment" --> but not <font color=red>over commented</font>
 
 <fieldset style="border: 2px groove">
-      <legend style="border: 2px groove;margin-left: -4em; padding:10px "><font color=white>Bad Comment</font></legend>
+      <legend style="border: 2px groove;margin-left: -1em; padding:10px "><font color=white>Bad Comment</font></legend>
 
 ```python[]
 def i_sqrt(n):
@@ -356,7 +357,7 @@ def i_sqrt(n):
 ## Good Comment Example
 
 <fieldset style="border: 1px groove">
-      <legend style="border: 1px groove;margin-left: -4em; padding:3px "><font color=white>Good Comment</font></legend>
+      <legend style="border: 1px groove;margin-left: -1em; padding:3px "><font color=white>Good Comment</font></legend>
 
 ```python[|3]
 def is_prime(n):
@@ -527,7 +528,7 @@ def quicksort(array):
 ## Example Problem
 
 <fieldset style="border: 2px groove; padding:10px">
-      <legend style="border: 2px groove;margin-left: -3em; padding:10px "><font color=white>Problem</font></legend>
+      <legend style="border: 2px groove;margin-left: -1em; padding:10px "><font color=white>Problem</font></legend>
 Given an array of integers $\texttt{nums}$ and a positive integer $k$, find whether it is possible to divide $\texttt{nums}$ into sets of $k$ consecutive
 numbers. 
 </fieldset> <!-- .element class="fragment" -->
