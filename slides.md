@@ -78,7 +78,7 @@ def bool_sat(formula):
 
 <div class="col">
 
-* You should always test your code
+* You should always test your code <!-- .element class="fragment" -->
 * This is the easiest way to catch bugs! <!-- .element class="fragment" -->
 * For example <!-- .element class="fragment" -->
 
